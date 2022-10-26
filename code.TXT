@@ -1,0 +1,37 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+/*
+    Дан текстовый файл. С консоли считывается строка.
+    Найти номера всех строк, в которых встречается данная подстрока.
+*/
+
+int main()
+{
+    const int maxsym = 50;
+    char str[maxsym];
+    int i = 0;
+    int pos;
+    string instr;
+    string tempstr;
+    cout << "Enter the gungeon: ";
+    cin >> instr;
+    ifstream file;
+    file.open("file.txt");
+
+    while (!file.eof())
+    {
+        file.getline(str, maxsym); // считали строку из файла
+        tempstr = str;
+        pos = tempstr.find(instr);
+        i++;
+        if (pos != -1)
+        {
+            cout << i << endl;
+        }
+    }
+    file.close(); // закрываем файл
+
+    return 0;
+}
